@@ -1,0 +1,27 @@
+version: "3"
+services:
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+
+  initdb:
+    build:
+      context: .
+      dockerfile: ./dbinit/Dockerfile
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=user=postgres password=postgres host=postgres port=5432 dbname=postgres
+
+  api:
+    build:
+      context: ./lightcurve
+    ports:
+      - 8000:8000
+    environment:
+      - DATABASE_URL=user=postgres password=postgres host=postgres port=5432 dbname=postgres

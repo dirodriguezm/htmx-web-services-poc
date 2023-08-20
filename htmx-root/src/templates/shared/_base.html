@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    {% block header %}
+    {% include "/shared/_header.html" %}
+    {% endblock %}
     {% block content %}
     {% endblock %}
 </body>

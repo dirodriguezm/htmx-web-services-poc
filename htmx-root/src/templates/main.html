@@ -1,13 +1,44 @@
 {% extends "/shared/_base.html" %}
 
 {% block content %}
-<section id="body" class="flex flex-col bg-slate-50 justify-center items-center max-w-screen-lg m-auto py-10">
-
-    <h1 class="text-3xl font-bold underline">
-        Hello world!
-    </h1>
-    <div hx-get="http://localhost:8001/plot/ZTF20aaelulu">
-        Click to fetch
+<section id="body" class="mx-4 my-4">
+    <div class="grid grid-cols-4 grid-rows-2 gap-4 ">
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden ">
+            <div class="px-6 py-4">
+                <h2 class="text-xl font-semibold text-gray-800">Object Details</h2>
+                <p class="mt-2 text-gray-600">This is a simple card component created with Tailwind CSS.</p>
+            </div>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden col-span-2">
+            <div class="px-6 py-4">
+                <h2 class="text-xl font-semibold text-gray-800">Lightcurve</h2>
+                <div hx-get="http://localhost:8000/plot/ZTF20aaelulu" hx-trigger="load"></div>
+            </div>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="px-6 py-4">
+                <h2 class="text-xl font-semibold text-gray-800">Aladin</h2>
+                <p class="mt-2 text-gray-600">This is a simple card component created with Tailwind CSS.</p>
+            </div>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="px-6 py-4">
+                <h2 class="text-xl font-semibold text-gray-800">Magstats</h2>
+                <p class="mt-2 text-gray-600">This is a simple card component created with Tailwind CSS.</p>
+            </div>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="px-6 py-4">
+                <h2 class="text-xl font-semibold text-gray-800">Probabilities</h2>
+                <p class="mt-2 text-gray-600">This is a simple card component created with Tailwind CSS.</p>
+            </div>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden col-span-2">
+            <div class="px-6 py-4">
+                <h2 class="text-xl font-semibold text-gray-800">Stamps</h2>
+                <p class="mt-2 text-gray-600">This is a simple card component created with Tailwind CSS.</p>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}

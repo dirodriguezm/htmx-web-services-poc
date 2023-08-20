@@ -16,8 +16,9 @@ func restRootHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello, you've requested: %s\n", r.URL.Path)
 }
 
-func restGetDetectionsHandler(db *pgxpool.Pool) func(w http.ResponseWriter, r *http.Request) {
+func restGetDetectionsHandler(db *pgxpool.Pool, enableCors func(w *http.ResponseWriter)) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
+		enableCors(&w)
 		oid := strings.TrimPrefix(r.URL.Path, "/detections/")
 		handle_success := func(result []core.Detection) {
 			FormatOutput[[]core.Detection](result, w)

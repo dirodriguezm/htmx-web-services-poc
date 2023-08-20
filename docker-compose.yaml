@@ -18,10 +18,16 @@ services:
     environment:
       - DATABASE_URL=user=postgres password=postgres host=postgres port=5432 dbname=postgres
 
-  api:
+  lightcurve-service:
     build:
-      context: ./lightcurve
+      context: ./lightcurve-service
     ports:
       - 8000:8000
     environment:
       - DATABASE_URL=user=postgres password=postgres host=postgres port=5432 dbname=postgres
+
+  htmx-root:
+    build:
+      context: ./htmx-root
+    ports:
+      - 8001:8000

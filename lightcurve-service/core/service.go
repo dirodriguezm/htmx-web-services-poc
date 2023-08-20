@@ -18,7 +18,7 @@ func GetDetections(
 		handle_error(err)
 	}
 	defer conn.Release()
-	rows, _ := conn.Query(context.Background(), "select * from detection where oid=$1", oid)
+	rows, _ := conn.Query(context.Background(), "select candid, oid, mjd, magpsf, sigmapsf, fid from detection where oid=$1", oid)
 	detections, err := pgx.CollectRows(rows, pgx.RowToStructByName[Detection])
 	if err != nil {
 		handle_error(err)

@@ -14,8 +14,8 @@ func webGetLightcurvePlot(db *pgxpool.Pool, enableCors func(w *http.ResponseWrit
 	return func(w http.ResponseWriter, r *http.Request) {
 		enableCors(&w)
 		oid := strings.TrimPrefix(r.URL.Path, "/plot/")
-		tmplFile := "templates/plot.tmpl"
-		tmpl, err := template.New("plot.tmpl").ParseFiles(tmplFile)
+		tmplFile := "templates/plot.html"
+		tmpl, err := template.New("plot.html").ParseFiles(tmplFile)
 		if err != nil {
 			panic(err)
 		}

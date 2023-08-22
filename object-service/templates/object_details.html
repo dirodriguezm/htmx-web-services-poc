@@ -1,0 +1,84 @@
+<head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css"
+        type="text/css" />
+    <style>
+        /* Remove vertical borders */
+        .table-no-vert-border th,
+        .table-no-vert-border td {
+            border-left: none !important;
+            border-right: none !important;
+        }
+    </style>
+</head>
+<div class="overflow-x-auto">
+    <table class="table-auto ">
+        <!-- Table headers will be the field names from your struct -->
+        <tr>
+            <td class="border-b p-2">ObjectId</td>
+            <td class="border-b p-2">{{ .Oid }}</td>
+            <td class="border-b p-2">
+            </td>
+        </tr>
+        <tr>
+            <td class="border-b p-2">Corrected</td>
+            <td class="border-b p-2">{{ .Corrected }}</td>
+            <td class="border-b p-2">
+            </td>
+        </tr>
+        <tr>
+            <td class="border-b p-2">Stellar</td>
+            <td class="border-b p-2">{{ .Stellar }}</td>
+            <td class="border-b p-2">
+            </td>
+        </tr>
+        <tr>
+            <td class="border-b p-2">Detections</td>
+            <td class="border-b p-2">{{ .Ndet }}</td>
+            <td class="border-b p-2">
+            </td>
+        </tr>
+        <tr>
+            <td class="border-b p-2">Ra</td>
+            <td class="border-b p-2">{{ .Meanra }}</td>
+            <td class="border-b p-2">
+                <div class="flex items-center justify-center ">
+                    <a href="#" class="mdi mdi-earth cursor-pointer p-4 rounded-full hover:bg-gray-200">
+                    </a>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="border-b p-2">Dec</td>
+            <td class="border-b p-2">{{ .Meandec }}</td>
+            <td class="border-b p-2">
+                <div class="flex items-center justify-center ">
+                    <a href="#" class="mdi mdi-earth cursor-pointer p-4 rounded-full hover:bg-gray-200">
+                    </a>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="border-b p-2">First detection</td>
+            <td class="border-b p-2">{{ .Firstmjd }}</td>
+            <td class="border-b p-2">
+                <div class="flex items-center justify-center ">
+                    <a href="#" class="mdi mdi-calendar cursor-pointer p-4 rounded-full hover:bg-gray-200">
+                    </a>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="border-b p-2">Last detection</td>
+            <td class="border-b p-2">{{ .Lastmjd }}</td>
+            <td class="border-b p-2">
+                <div class="flex items-center justify-center ">
+                    <a href="#" class="mdi mdi-calendar cursor-pointer p-4 rounded-full hover:bg-gray-200">
+                    </a>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+</div>

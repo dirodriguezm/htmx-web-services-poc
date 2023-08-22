@@ -1,9 +1,7 @@
 package api
 
 import (
-	"alerce/lightcurve/core"
 	"html/template"
-	"log"
 	"net/http"
 	"strings"
 
@@ -19,15 +17,9 @@ func webGetLightcurvePlot(db *pgxpool.Pool, enableCors func(w *http.ResponseWrit
 		if err != nil {
 			panic(err)
 		}
-		handleSuccess := func(result []core.Detection) {
-			err = tmpl.Execute(w, result)
-			if err != nil {
-				panic(err)
-			}
+		err = tmpl.Execute(w, oid)
+		if err != nil {
+			panic(err)
 		}
-		handleError := func(err error) {
-			log.Fatal(err)
-		}
-		core.GetDetections(oid, handleSuccess, handleError, db)
 	}
 }

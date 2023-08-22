@@ -5,8 +5,12 @@
     <div class="grid grid-cols-4 grid-rows-2 gap-4 ">
         <div class="bg-white shadow-lg rounded-lg overflow-hidden ">
             <div class="px-6 py-4">
+                <link rel="stylesheet" href="http://localhost:8002/static/css/main.css" type="text/css" />
+                <link rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css"
+                    type="text/css" />
                 <h2 class="text-xl font-semibold text-gray-800">Object Details</h2>
-                <p class="mt-2 text-gray-600">This is a simple card component created with Tailwind CSS.</p>
+                <div hx-get="http://localhost:8002/object-details/ZTF20aaelulu" hx-trigger="load"></div>
             </div>
         </div>
         <div class="bg-white shadow-lg rounded-lg overflow-hidden col-span-2">

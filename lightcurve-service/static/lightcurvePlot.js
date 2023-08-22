@@ -1,6 +1,6 @@
 var myChart = echarts.init(document.getElementById('main'));
 
-fetch("http://localhost:8000/detections/ZTF20aaelulu").then(
+fetch(`http://localhost:8000/detections/${oid}`).then(
   response => response.json()
 ).then(data => {
   let g = data.filter(function (item) {
@@ -58,4 +58,3 @@ fetch("http://localhost:8000/detections/ZTF20aaelulu").then(
   // Display the chart using the configuration items and data just specified.
   myChart.setOption(option);
 });
-

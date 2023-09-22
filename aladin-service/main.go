@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 )
 
@@ -51,7 +52,8 @@ func aladin(w http.ResponseWriter, r *http.Request) {
 }
 
 func getObject(oid string) Object {
-	url := fmt.Sprintf("http://localhost:8002/object/%v", oid)
+	objectServiceUrl := os.Getenv("OBJECT_SERVICE_URL")
+	url := fmt.Sprintf("%s/%s", objectServiceUrl, oid)
 	resp, err := http.Get(url)
 	if err != nil {
 		log.Printf("Failed to fetch %s\n", url)

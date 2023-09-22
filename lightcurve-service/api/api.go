@@ -14,7 +14,7 @@ func enableCors(w *http.ResponseWriter) {
 }
 
 func restEndpoints(db *pgxpool.Pool) {
-	// http.HandleFunc("/", restRootHandler)
+	http.HandleFunc("/", restRootHandler)
 	http.HandleFunc("/detections/", restGetDetectionsHandler(db, enableCors))
 }
 
@@ -41,5 +41,5 @@ func Api() {
 	staticFiles()
 	log.SetPrefix("API Server: ")
 	log.Print("initialized")
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	log.Fatal(http.ListenAndServe(":8002", nil))
 }

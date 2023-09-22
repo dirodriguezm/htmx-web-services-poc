@@ -1,6 +1,7 @@
 var myChart = echarts.init(document.getElementById('main'));
 
-fetch(`http://localhost:8000/detections/${oid}`).then(
+
+fetch(`http://localhost:8002/detections/${oid}`).then(
   response => response.json()
 ).then(data => {
   let g = data.filter(function (item) {

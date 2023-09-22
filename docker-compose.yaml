@@ -1,33 +1,36 @@
 version: "3"
 services:
-  postgres:
-    image: postgres
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD=postgres
-    ports:
-      - 5432:5432
-
-  initdb:
+  htmx-root:
     build:
       context: .
-      dockerfile: ./dbinit/Dockerfile
-    depends_on:
-      - postgres
+      dockerfile: ./htmx-root/Dockerfile
+    ports:
+      - 8000:8000
+
+  object-service:
+    build:
+      context: .
+      dockerfile: ./object-service/Dockerfile
+    ports:
+      - 8001:8001
     environment:
-      - DATABASE_URL=user=postgres password=postgres host=postgres port=5432 dbname=postgres
+      - DATABASE_URL=${DATABASE_URL}
 
   lightcurve-service:
     build:
-      context: ./lightcurve-service
+      context: .
+      dockerfile: ./lightcurve-service/Dockerfile
     ports:
-      - 8000:8000
+      - 8002:8002
     environment:
-      - DATABASE_URL=user=postgres password=postgres host=postgres port=5432 dbname=postgres
+      - DATABASE_URL=${DATABASE_URL}
 
-  htmx-root:
+  aladin-service:
     build:
-      context: ./htmx-root
+      context: .
+      dockerfile: ./aladin-service/Dockerfile
     ports:
-      - 8001:8000
+      - 8003:8003
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - OBJECT_SERVICE_URL=http://object-service:8001/object

@@ -45,7 +45,7 @@ func Api() {
 	restEndpoints(db)
 	webEndpoints(db)
 	staticFiles()
-	log.SetPrefix("API Server: ")
+	log.SetPrefix("Object Service: ")
 	log.Print("initialized")
-	log.Fatal(http.ListenAndServe(":8002", nil))
+	log.Fatal(http.ListenAndServe(":8001", nil))
 }

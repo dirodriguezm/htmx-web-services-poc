@@ -3,17 +3,11 @@
     <link rel="stylesheet" href="/static/css/main.css" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css"
         type="text/css" />
-    <style>
-        /* Remove vertical borders */
-        .table-no-vert-border th,
-        .table-no-vert-border td {
-            border-left: none !important;
-            border-right: none !important;
-        }
-    </style>
+
+    <script src="/static/js/htmx.min.js"></script>
 </head>
-<div class="overflow-x-auto">
-    <table class="table-auto ">
+<div class="overflow-x-auto overflow-y-auto">
+    <table class="table-auto" hx-target="closest tr" hx-swap="outerHTML">
         <!-- Table headers will be the field names from your struct -->
         <tr>
             <td class="border-b p-2">ObjectId</td>
@@ -39,11 +33,12 @@
             <td class="border-b p-2">
             </td>
         </tr>
-        <tr>
+        <tr id="ra">
             <td class="border-b p-2">Ra</td>
             <td class="border-b p-2">{{ .Meanra }}</td>
             <td class="border-b p-2">
-                <a href="#" class="mdi mdi-earth cursor-pointer p-4 rounded-full hover:bg-gray-200">
+                <a id="ra-icon" href="#" class="mdi mdi-earth cursor-pointer p-4 rounded-full hover:bg-gray-200"
+                    hx-get="http://localhost:8002/ra-hms/?ra={{ .Meanra }}">
                 </a>
             </td>
         </tr>
@@ -51,7 +46,8 @@
             <td class="border-b p-2">Dec</td>
             <td class="border-b p-2">{{ .Meandec }}</td>
             <td class="border-b p-2">
-                <a href="#" class="mdi mdi-earth cursor-pointer p-4 rounded-full hover:bg-gray-200">
+                <a id="ra-icon" href="#" class="mdi mdi-earth cursor-pointer p-4 rounded-full hover:bg-gray-200"
+                    hx-get="http://localhost:8002/dec-dms/?dec={{ .Meandec }}">
                 </a>
             </td>
         </tr>
@@ -59,7 +55,8 @@
             <td class="border-b p-2">First detection</td>
             <td class="border-b p-2">{{ .Firstmjd }}</td>
             <td class="border-b p-2">
-                <a href="#" class="mdi mdi-calendar cursor-pointer p-4 rounded-full hover:bg-gray-200">
+                <a href="#" class="mdi mdi-calendar cursor-pointer p-4 rounded-full hover:bg-gray-200"
+                    hx-get="http://localhost:8002/mjd-greg/?mjd={{ .Firstmjd }}">
                 </a>
             </td>
         </tr>
@@ -67,7 +64,8 @@
             <td class="border-b p-2">Last detection</td>
             <td class="border-b p-2">{{ .Lastmjd }}</td>
             <td class="border-b p-2">
-                <a href="#" class="mdi mdi-calendar cursor-pointer p-4 rounded-full hover:bg-gray-200">
+                <a href="#" class="mdi mdi-calendar cursor-pointer p-4 rounded-full hover:bg-gray-200"
+                    hx-get="http://localhost:8002/mjd-greg/?mjd={{ .Lastmjd }}">
                 </a>
             </td>
         </tr>

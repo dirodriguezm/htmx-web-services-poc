@@ -15,10 +15,17 @@ func enableCors(w *http.ResponseWriter) {
 
 func restEndpoints(db *pgxpool.Pool) {
 	http.HandleFunc("/object/", restGetObjectHandler(db, enableCors))
+	http.HandleFunc("/", restRoot(enableCors))
 }
 
 func webEndpoints(db *pgxpool.Pool) {
 	http.HandleFunc("/object-details/", webGetObjectDetails(db, enableCors))
+	http.HandleFunc("/ra-hms/", webRaHms(enableCors))
+	http.HandleFunc("/ra-deg/", webRaDegree(enableCors))
+	http.HandleFunc("/dec-dms/", webDecDms(enableCors))
+	http.HandleFunc("/dec-deg/", webDecDegree(enableCors))
+	http.HandleFunc("/mjd-greg/", webMjdToGreg(enableCors))
+	http.HandleFunc("/greg-mjd/", webGregToMjd(enableCors))
 }
 
 func cors(fs http.Handler) http.HandlerFunc {

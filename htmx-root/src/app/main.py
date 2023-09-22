@@ -1,9 +1,10 @@
-from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
 from pathlib import Path
-from .routes import router
-from fastapi.middleware.cors import CORSMiddleware
 
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+
+from .routes import router
 
 src_path = Path(__file__).resolve().parent.parent
 
@@ -14,6 +15,7 @@ def create_app() -> FastAPI:
     origins = [
         "http://localhost:8000",
         "http://localhost:8001",
+        "http://localhost:8002",
     ]
     app.add_middleware(
         CORSMiddleware,

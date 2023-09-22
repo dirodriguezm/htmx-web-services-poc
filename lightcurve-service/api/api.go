@@ -36,7 +36,6 @@ func staticFiles() {
 
 func Api() {
 	db := dbconn.CreatePool()
-	// dbconn.CreateTables(db)
 	restEndpoints(db)
 	webEndpoints(db)
 	staticFiles()

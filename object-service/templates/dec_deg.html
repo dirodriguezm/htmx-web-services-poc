@@ -1,0 +1,9 @@
+<tr>
+    <td class="border-b p-2">Dec</td>
+    <td class="border-b p-2">{{ . }}</td>
+    <td class="border-b p-2">
+        <a id="ra-icon" href="#" class="mdi mdi-earth cursor-pointer p-4 rounded-full hover:bg-gray-200"
+            hx-get="http://localhost:8002/dec-dms/?dec={{ . }}">
+        </a>
+    </td>
+</tr>

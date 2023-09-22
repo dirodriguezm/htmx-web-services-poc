@@ -1,6 +1,7 @@
 go 1.20
 
 use (
+	./aladin-service
 	./dbinit
 	./lightcurve-service
 	./object-service

@@ -3,6 +3,7 @@ package api
 import (
 	"alerce/object/core"
 	"errors"
+	"fmt"
 	"log"
 	"net/http"
 	"strings"
@@ -10,6 +11,13 @@ import (
 	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
+
+func restRoot(enableCors func(w *http.ResponseWriter)) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		enableCors(&w)
+		fmt.Fprintf(w, "Hello, this is the Object service")
+	}
+}
 
 func restGetObjectHandler(db *pgxpool.Pool, enableCors func(w *http.ResponseWriter)) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
